@@ -1,17 +1,17 @@
-import { Directive, HostBinding, Inject, Input } from '@angular/core';
-import { ChangraSpacingKey, ChangraTheme, CHANGRA_THEME } from './changraTheme';
+import { Directive, HostBinding, Inject, Input } from "@angular/core";
+import { ChangraSpacingKey, ChangraTheme, CHANGRA_THEME } from "./changraTheme";
 
 @Directive({
-  selector: '[cuiStyled]',
+  selector: "[cuiStyled]",
 })
 export class ChangraStylePropsDirective {
   constructor(@Inject(CHANGRA_THEME) private theme: ChangraTheme) {
-    console.log('IM BEING INITIALIZED');
+    console.log("IM BEING INITIALIZED");
   }
 
   // MARGIN
 
-  @HostBinding('style.margin') get hostMargin(): string {
+  @HostBinding("style.margin") get hostMargin(): string {
     const key = this.margin ?? this.m;
 
     if (key) {
@@ -23,6 +23,6 @@ export class ChangraStylePropsDirective {
     }
   }
 
-  @Input() margin?: ChangraSpacingKey | string;
-  @Input() m?: ChangraSpacingKey | string;
+  @Input() margin?: ChangraSpacingKey | string | "px";
+  @Input() m?: ChangraSpacingKey | string | "px";
 }
